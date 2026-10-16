@@ -2,94 +2,389 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101114">
-<title>Контакты для записи</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:28px 16px;
- display:grid;place-items:center;
- background:#101114;color:#f5f5f7;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
-}
-main{width:100%;max-width:430px}
-h1{font-size:28px;letter-spacing:-.8px;margin:0 0 8px}
-.subtitle{color:#999ba6;margin:0 0 26px;line-height:1.5}
-.contact{
- background:#191a1f;border:1px solid #2b2c33;
- border-radius:20px;padding:22px;margin-bottom:16px
-}
-.contact h2{font-size:16px;margin:0 0 12px;color:#a8a9b2;font-weight:500}
-.number{font-size:23px;font-weight:650;letter-spacing:-.5px;margin-bottom:10px}
-.services{font-size:13px;color:#92949f;margin-bottom:18px}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-a,button{
- display:flex;justify-content:center;align-items:center;
- min-height:45px;padding:11px 8px;border-radius:11px;
- border:1px solid #373841;background:#25262d;color:#fff;
- text-decoration:none;font-size:14px;font-weight:600;
- cursor:pointer;font-family:inherit
-}
-a:hover,button:hover{background:#34353e}
-.primary{background:#fff;color:#111;border-color:#fff}
-.primary:hover{background:#dedee3;color:#111}
-.status{min-height:20px;text-align:center;color:#9de6b1;font-size:13px;margin-top:12px}
-footer{text-align:center;color:#777983;font-size:12px;margin-top:20px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101114">
+
+    <title>Запись и консультации — Konstantin Danilchenko</title>
+    <meta name="description" content="Контакты для записи на массаж и консультации к Константину Данильченко.">
+
+    <style>
+        :root {
+            --bg: #101114;
+            --surface: #191a1f;
+            --surface-hover: #22242a;
+            --border: #303239;
+            --text: #f5f5f7;
+            --muted: #999ba6;
+            --accent: #28B5AA;
+            --accent-hover: #35C8BC;
+            --accent-text: #101114;
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 32px 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            border: 1px solid rgba(40, 181, 170, .4);
+            border-radius: 14px;
+            background: rgba(40, 181, 170, .09);
+            color: var(--accent);
+            font-size: 25px;
+            font-weight: 750;
+            letter-spacing: -2px;
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(27px, 7vw, 34px);
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            line-height: 1.15;
+        }
+
+        .subtitle {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .contact {
+            margin-bottom: 14px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            transition: border-color .2s;
+        }
+
+        .contact:hover {
+            border-color: rgba(40, 181, 170, .5);
+        }
+
+        .contact-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 650;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+        .contact-label::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(40, 181, 170, .3);
+        }
+
+        .number {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: clamp(22px, 6vw, 26px);
+            font-weight: 700;
+            letter-spacing: -.8px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .number:hover {
+            color: var(--accent);
+        }
+
+        .services {
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+        }
+
+        .action {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            min-height: 46px;
+            padding: 11px 8px;
+            border: 1px solid rgba(40, 181, 170, .6);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 650;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition:
+                background .2s,
+                border-color .2s,
+                color .2s,
+                transform .2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .action:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--accent-text);
+        }
+
+        .action:active {
+            transform: scale(.98);
+        }
+
+        .action.primary {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--accent-text);
+        }
+
+        .action.primary:hover {
+            border-color: var(--accent-hover);
+            background: var(--accent-hover);
+        }
+
+        .action svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+        }
+
+        .status {
+            min-height: 22px;
+            margin-top: 12px;
+            color: var(--accent);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 22px;
+            color: #777983;
+            font-size: 12px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .footer strong {
+            color: #a9abb3;
+            font-weight: 600;
+        }
+
+        @media (max-width: 360px) {
+            .contact {
+                padding: 18px;
+            }
+
+            .action {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<main>
-<h1>Запись и консультации</h1>
-<p class="subtitle">Выберите удобный способ связи.</p>
+<main class="page">
 
-<section class="contact">
-<h2>Контакт № 1</h2>
-<div class="number">+380 50 609 5908</div>
-<div class="services">WhatsApp · Telegram</div>
-<div class="actions">
-<button class="primary" onclick="copy('+380506095908')">Скопировать номер</button>
-<a href="tel:+380506095908">Позвонить</a>
-<a href="https://wa.me/380506095908" target="_blank" rel="noopener">WhatsApp</a>
-<a href="https://t.me/+380506095908" target="_blank" rel="noopener">Telegram</a>
-</div>
-</section>
+    <header class="header">
+        <div class="brand-mark" aria-hidden="true">KD</div>
+        <p class="eyebrow">Konstantin Danilchenko</p>
+        <h1>Запись и консультации</h1>
+        <p class="subtitle">
+            Выберите удобный способ связи. Буду рад помочь вам.
+        </p>
+    </header>
 
-<section class="contact">
-<h2>Контакт № 2</h2>
-<div class="number">+40 734 393 146</div>
-<div class="services">Телефон · WhatsApp · Telegram · Viber</div>
-<div class="actions">
-<button class="primary" onclick="copy('+40734393146')">Скопировать номер</button>
-<a href="tel:+40734393146">Позвонить</a>
-<a href="https://wa.me/40734393146" target="_blank" rel="noopener">WhatsApp</a>
-<a href="https://t.me/+40734393146" target="_blank" rel="noopener">Telegram</a>
-<a href="viber://chat?number=%2B40734393146">Viber</a>
-</div>
-</section>
+    <section class="contact" aria-labelledby="contact-ua">
+        <div class="contact-label" id="contact-ua">
+            Контакт № 1
+        </div>
 
-<div class="status" id="status" aria-live="polite"></div>
-<footer>Контакты для записи и консультаций</footer>
+        <a class="number" href="tel:+380506095908">
+            +380 50 609 5908
+        </a>
+
+        <div class="services">
+            Украина · WhatsApp · Telegram
+        </div>
+
+        <div class="actions">
+            <button class="action primary"
+                    type="button"
+                    onclick="copyNumber('+380506095908')">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <rect x="8" y="8" width="13" height="13" rx="2"/>
+                    <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                </svg>
+                Копировать
+            </button>
+
+            <a class="action" href="tel:+380506095908">
+                Позвонить
+            </a>
+
+            <a class="action"
+               href="https://wa.me/380506095908"
+               target="_blank" rel="noopener noreferrer">
+                WhatsApp
+            </a>
+
+            <button class="action"
+                    type="button"
+                    onclick="copyNumber('https://t.me/+380506095908')">
+                Telegram
+            </button>
+        </div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-ro">
+        <div class="contact-label" id="contact-ro">
+            Контакт № 2
+        </div>
+
+        <a class="number" href="tel:+40734393146">
+            +40 734 393 146
+        </a>
+
+        <div class="services">
+            Телефон · WhatsApp · Telegram · Viber
+        </div>
+
+        <div class="actions">
+            <button class="action primary"
+                    type="button"
+                    onclick="copyNumber('+40734393146')">
+                <svg viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <rect x="8" y="8" width="13" height="13" rx="2"/>
+                    <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>
+                </svg>
+                Копировать
+            </button>
+
+            <a class="action" href="tel:+40734393146">
+                Позвонить
+            </a>
+
+            <a class="action"
+               href="https://wa.me/40734393146"
+               target="_blank" rel="noopener noreferrer">
+                WhatsApp
+            </a>
+
+            <button class="action"
+                    type="button"
+                    onclick="copyNumber('https://t.me/+40734393146')">
+                Telegram
+            </button>
+
+            <a class="action"
+               href="viber://chat?number=%2B40734393146">
+                Viber
+            </a>
+        </div>
+    </section>
+
+    <div class="status" id="status" role="status"
+         aria-live="polite"></div>
+
+    <footer class="footer">
+        <strong>Konstantin Danilchenko</strong><br>
+        Массажист · Кинезиолог
+    </footer>
+
 </main>
 
 <script>
-async function copy(value){
- const status=document.getElementById('status');
- try{
-  await navigator.clipboard.writeText(value);
-  status.textContent='Номер скопирован';
- }catch(e){
-  const input=document.createElement('textarea');
-  input.value=value;
-  input.style.position='fixed';
-  input.style.opacity='0';
-  document.body.appendChild(input);
-  input.select();
-  const ok=document.execCommand('copy');
-  input.remove();
-  status.textContent=ok?'Номер скопирован':'Не удалось скопировать номер';
- }
+async function copyNumber(value) {
+    const status = document.getElementById('status');
+
+    try {
+        await navigator.clipboard.writeText(value);
+        status.textContent = 'Скопировано в буфер обмена';
+    } catch (error) {
+        const field = document.createElement('textarea');
+        field.value = value;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.left = '-9999px';
+
+        document.body.appendChild(field);
+        field.select();
+
+        const success = document.execCommand('copy');
+        field.remove();
+
+        status.textContent = success
+            ? 'Скопировано в буфер обмена'
+            : 'Не удалось скопировать. Попробуйте ещё раз.';
+    }
 }
 </script>
 </body>
